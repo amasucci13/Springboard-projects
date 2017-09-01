@@ -1,0 +1,10 @@
+titanic_clean <- titanic_original %>% mutate(embarked = ifelse(is.na(embarked), "S",embarked))
+#Think about other ways you could have populated the missing values in the age column. Why would you pick any of those over the mean (or not)? 
+#You could eliminate those observations since the data is missing. I would eliminate these
+
+summarize(titanic_clean, Average = mean(age, na.rm = T))
+titanic_clean <- titanic_clean %>% mutate(age = ifelse(is.na(Age), "29.88",age))
+
+titanic_clean <- titanic_clean %>% mutate(boat= ifelse(is.na(boat), "None",boat))
+
+titanic_clean <- titanic_clean %>% mutate(has_cabin_number = ifelse(is.na(cabin), "0", "1"))
